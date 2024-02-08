@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background-image: url("./images/shubham-dhage-kUptPYLCnbk-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+h1, a {
+    font-family: 'Roboto', sans-serif;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.button {
+    margin: 0 10px;
+    font-size: 18px;
+}
+
+.rectangle {
+    background-color: rgba(191, 191, 191, 0.8);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 10px;
+}
