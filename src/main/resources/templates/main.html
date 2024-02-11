@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="UTF-8">
         <title>Main page</title>
-        <link rel="stylesheet" href="../static/main.css">
+        <link href="../static/css/main.css" rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     </head>
 
     <body>
@@ -11,7 +11,7 @@
             <div class="rectangle">
                 <h1>Welcome to the site for generating passwords and checking passwords!</h1>
                 <div class="buttons">
-                    <a href="generating" class="button">
+                    <a href="passwordform" class="button">
                         Generating password
                     </a>
                     <a href="checking" class="button">

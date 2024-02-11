@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@font-face {
+    font-family: 'Roboto-Italic';
+    src: url('../fonts/Roboto-Italic.ttf') format('truetype');
+}
 
 body, html {
     height: 100%;
 }
 
 body {
-    background-image: url("./images/shubham-dhage-kUptPYLCnbk-unsplash.jpg");
+    background-image: url('../images/main_background.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -23,7 +26,7 @@ h1 {
 }
 
 h1, a {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto-Italic', sans-serif;
 }
 
 .buttons {
