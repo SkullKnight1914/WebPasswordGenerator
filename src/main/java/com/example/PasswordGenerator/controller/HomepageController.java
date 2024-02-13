@@ -1,5 +1,6 @@
 package com.example.PasswordGenerator.controller;
 
+import com.example.PasswordGenerator.service.PasswordCheckService;
 import com.example.PasswordGenerator.service.PasswordGeneratorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -8,13 +9,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.example.PasswordGenerator.model.Password;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.LinkedHashMap;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 public class HomepageController {
 
-    private final PasswordGeneratorService service;
+    private final PasswordGeneratorService generatorService;
+    private final PasswordCheckService checkService;
 
     @GetMapping("/")
     public String mainpage() {
@@ -38,8 +42,15 @@ public class HomepageController {
      */
     @PostMapping("/passwordform/generate")
     public String generatePassword(@ModelAttribute("password") Password password, Model model) {
-        List<String> generatedPasswords = service.generatePasswords(password);
-        model.addAttribute("passwords", generatedPasswords);
+        List<String> generatedPasswords = generatorService.generatePasswords(password);
+        List<String> generatedPasswordsInfo = checkService.checkingPassword(generatedPasswords);
+//        model.addAttribute("passwords", generatedPasswords);
+        LinkedHashMap<String, String> output = new LinkedHashMap<>();
+
+        for (int i = 0; i < generatedPasswords.size(); i++) {
+            output.put(generatedPasswords.get(i), generatedPasswordsInfo.get(i));
+        }
+        model.addAttribute("passwords", output);
         return "passwordResult";
     }
 
