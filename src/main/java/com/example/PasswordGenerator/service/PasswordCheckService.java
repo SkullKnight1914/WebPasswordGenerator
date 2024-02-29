@@ -11,13 +11,17 @@ public class PasswordCheckService {
     public List<String> checkingPassword(List<String> generatedPasswords) {
         List<String> passwordsInfo = new ArrayList<>();
 
-        for (String password : generatedPasswords) {
-            int charsSetSize = getCharactersSetSize(password);
-            long combinations = calculateTotalCombinations(password.length(), charsSetSize);
-            passwordsInfo.add("Number of combinations for this password: " + combinations + ".");
+        for (int i = 0; i < generatedPasswords.size(); i++) {
+            passwordsInfo.add(checkingForString(generatedPasswords.get(i)));
         }
 
         return passwordsInfo;
+    }
+
+    public String checkingForString(String password) {
+        int charsSetSize = getCharactersSetSize(password);
+        long combinations = calculateTotalCombinations(password.length(), charsSetSize);
+        return "Number of combinations for this password: " + combinations + ".";
     }
 
     private int getCharactersSetSize(String password) {

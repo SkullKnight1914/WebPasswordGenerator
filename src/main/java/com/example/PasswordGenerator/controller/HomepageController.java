@@ -3,12 +3,14 @@ package com.example.PasswordGenerator.controller;
 import com.example.PasswordGenerator.service.PasswordCheckService;
 import com.example.PasswordGenerator.service.PasswordGeneratorService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.example.PasswordGenerator.model.Password;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -57,5 +59,12 @@ public class HomepageController {
     @GetMapping("/checking")
     public String checkingPage() {
         return "checking";
+    }
+
+    @PostMapping("/checking/checkingResult")
+    public String checkingInput(@RequestParam("inputString") String password, Model model) {
+        String result = checkService.checkingForString(password);
+        model.addAttribute("result", result);
+        return "checkingResult";
     }
 }
